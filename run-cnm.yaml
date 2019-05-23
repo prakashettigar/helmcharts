@@ -2,20 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cnm
-  labels:
-    app: cnm
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: cnm
+      run: cnm
+  replicas: 2
   template:
     metadata:
       labels:
-        app: cnm
+        run: cnm
     spec:
       containers:
       - name: cnm
         image: index.docker.io/prakashshettigar23/networkapp:latest
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
+

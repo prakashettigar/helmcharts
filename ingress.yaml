@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cnm-ingress
+  annotations:
+    ingress.kubernetes.io/add-base-url: "true"
+spec:
+  rules:
+  - host: some.kind.of.hostname.co
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: cnm
+          servicePort: 80
